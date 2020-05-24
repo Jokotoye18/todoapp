@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}delete_all{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <p>Are you sure you want to delete all your todo?</p>
+                    </div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-danger">comfirm</button>
+                        <a class="btn btn-info" href="{% url 'todoapp:home' %}">cancel</a>
+                    </form>
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

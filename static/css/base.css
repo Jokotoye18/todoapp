@@ -1,0 +1,16 @@
+*{
+    border: none;
+}
+body{
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+.asteriskField{
+    display: none;
+}
+
+ul .click:hover{
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+}

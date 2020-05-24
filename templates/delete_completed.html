@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}delete_completed{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            {% if not todos %}
+            <div class="card">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <p>You did not have any completed todo. Go back to <a class="btn btn-outline-info ml-2" href="{% url 'todoapp:home' %}">home</a></p>
+                    </div>
+                </div> 
+            </div>
+            {% else %}
+            <div class="card">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <p>Are you sure you want to delete all the completed todo?</p>
+                    </div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <button class="btn btn-danger">comfirm</button>
+                        <a class="btn btn-info" href="{% url 'todoapp:home' %}">cancel</a>
+                    </form>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

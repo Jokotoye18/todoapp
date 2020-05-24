@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}todo_list{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-8">
+            <div class="card border border-dark">
+                <div class="card-header">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button class="btn btn-block btn-info lead" ><i class="fa fa-plus" ></i> Add</button>
+                    </form>
+                    <div class=" d-flex my-3 justify-content-center text-center align-items-center">
+                        {% if todo_list %}
+                            <a class="btn btn-danger mx-2 lead" href="{% url 'todoapp:delete_all' %}">Delete all</a>
+                            <a class="btn btn-danger mx-2 lead" href="{% url 'todoapp:delete_completed' %}">Delete completed</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="card-footer">
+                    {% for todo in todo_list %}
+                        <div class="row justify-content-between my-3 ">
+                            <div class="col-10 align-items-center">
+                                {% if todo.completed %}
+                                <div class=" bg-success text-white rounded d-flex">
+                                    <div>
+                                        <p class="px-1" style="display: inline-block; text-decoration: line-through;"><a class="text-white"  href="{% url 'todoapp:uncompleted' todo.id %}">{{ todo.title }}</a></p>
+                                    </div>                                    
+                                </div>
+                                {% else %}
+                                <div class=" bg-secondary text-white rounded d-flex">
+                                    <div>
+                                        <p class="px-1" style="display: inline-block;"><a class="text-white" href="{% url 'todoapp:completed' todo.id %}">{{ todo.title }}</a></p>
+                                    </div>                                    
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-2 align-self-center text-left">
+                                <a class="" href="{% url 'todoapp:delete' todo.id %}"><i class="fa fa-trash-o  text-danger"></i></a>
+                            </div>
+                        </div> 
+                    {% empty %}
+                        <p class="lead">You have not added any todo yet. </p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>                    
+{% endblock %}

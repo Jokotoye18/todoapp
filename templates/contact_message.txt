@@ -1,0 +1,11 @@
+You received a message from your contact form
+
+From {{user}}
+
+This is what they said:
+
+{{message}}
+
+Reply to this email:
+
+{{email}}
