@@ -31,9 +31,7 @@
                     <div>
                         {% if request.user.is_authenticated %}
                         <div class="dropdown">
-                        <a class="dropdown-toggle btn btn-secondary" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ request.user }}
-                        </a>
+                        <a class="dropdown-toggle btn btn-secondary mt-2 mt-lg-0" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"> {{ request.user }}</i></a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="{% url 'account_change_password' %}">Change password</a>
                             <div class="dropdown-divider"></div>
@@ -44,10 +42,10 @@
                         <div>
                             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                                 <li class="nav-item ">
-                                    <a class="nav-link btn btn-outline-info m-2" href="{% url 'account_login' %}">Sign in</a>
+                                    <a class="nav-link btn btn-outline-info m-2" href="{% url 'account_login' %}"><i class="fa fa-sign-in" aria-hidden="true"> Sign in</i></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-secondary m-2" href="{% url 'account_signup' %}">Sign up</a>
+                                    <a class="nav-link btn btn-secondary m-2" href="{% url 'account_signup' %}"><i class="fa fa-user-plus" aria-hidden="true"> Sign up</i></a>
                                 </li>
                             </ul>
                         </div>
@@ -66,8 +64,9 @@
     </div>
     {% endblock %}
     <div class="my-4 text-center">
-        <a style="color: #f4cbb2;" class="btn bg-white mr-2" href="https://github.com/Jokotoye18"><i class="fab fa-github github">Github</i></a>
-        <a style="color: #008abe;" class="btn bg-white mr-2" href="https://twitter.com/AkinJokotoye"><i class="fab fa-twitter twitter">Twitter</i></a>
+        <a style="color: #f4cbb2;" class="btn bg-white mr-2" href="https://github.com/Jokotoye18"><i class="fa fa-github" aria-hidden="true"> Github</i></a>
+        <a style="color: #008abe;" class="btn bg-white mr-2" href="https://twitter.com/AkinJokotoye"><i class="fa fa-twitter-square" aria-hidden="true"> Twitter</i></a>
+        <a style="color: #B23121;" class="btn bg-white mr-2" href="{% url 'contact:contact' %}"><i class="fa fa-envelope" aria-hidden="true"> Contact</i></a>
     </div>
     <div class="text-center rounded text-white">
         <div class="my-4">
