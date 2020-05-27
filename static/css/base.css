@@ -10,7 +10,9 @@ body{
     display: none;
 }
 
-ul .click:hover{
-    border-bottom: 2px solid black;
-    padding-bottom: 10px;
+.navig:hover{
+    background-color: #c4c4c4;
+    color: black;
+    border-radius: 0.2rem;
+    padding: 0 1rem;
 }
