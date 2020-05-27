@@ -76,4 +76,3 @@ def mark_uncompleted(request, todo_id):
     return render(request, 'mark_uncompleted.html', context)
 
 
-

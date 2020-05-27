@@ -14,6 +14,14 @@ import os
 import django_heroku
 from decouple import config
 from decouple import Csv
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+sentry_sdk.init(
+    dsn="https://a5d1af78ed7e42ab9b74c0e2153939f9@o398751.ingest.sentry.io/5254874",
+    integrations=[DjangoIntegration()],
+)
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -33,8 +41,8 @@ print(ENVIRONMENT)
 DEBUG = config('', default=False, cast=bool)
 print(DEBUG)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1', cast=Csv())
-print()
+ALLOWED_HOSTS = config('', default='127.0.0.1', cast=Csv())
+print(ALLOWED_HOSTS)
 
 #ALLOWED_HOSTS = ['*']
 

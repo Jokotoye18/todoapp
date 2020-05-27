@@ -16,6 +16,7 @@ python-memcached = "*"
 whitenoise = "*"
 gunicorn = "*"
 django-heroku = "*"
+sentry-sdk = "*"
 
 [requires]
 python_version = "3.8"
