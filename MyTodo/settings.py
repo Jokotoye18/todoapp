@@ -38,7 +38,7 @@ ENVIRONMENT = config('ENVIRONMENT', default='production')
 print(ENVIRONMENT)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('', default=False, cast=bool)
+DEBUG = config('DEBUG', default=False, cast=bool)
 print(DEBUG)
 
 ALLOWED_HOSTS = config('', default='127.0.0.1', cast=Csv())
@@ -196,7 +196,7 @@ ACCOUNT_LOGOUT_REDIRECT = 'todoapp:home'
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = config('EMAIL_BACKEND')
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD =  config('EMAIL_HOST_PASSWORD')
