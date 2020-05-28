@@ -56,7 +56,7 @@
         </div>
     </header>
     <section>
-        <img style="width: 100%;" class="img-fluid" src="{% static 'images/original.jpg' %}" alt="">
+        <img style="width: 100%;" class="img-fluid" src="{% static 'images/original.jpg' %}" alt="original">
     </section>
     {% block content %}
     <div class="container my-5">
@@ -64,8 +64,8 @@
     </div>
     {% endblock %}
     <div class="my-4 text-center">
-        <a style="color: #f4cbb2;" class="btn bg-white mr-2" href="https://github.com/Jokotoye18"><i class="fa fa-github" aria-hidden="true"> Github</i></a>
-        <a style="color: #008abe;" class="btn bg-white mr-2" href="https://twitter.com/AkinJokotoye"><i class="fa fa-twitter-square" aria-hidden="true"> Twitter</i></a>
+        <a style="color: #f4cbb2;" class="btn bg-white mr-2" href="https://github.com/Jokotoye18" target="_blank"><i class="fa fa-github" aria-hidden="true"> Github</i></a>
+        <a style="color: #008abe;" class="btn bg-white mr-2" href="https://twitter.com/AkinJokotoye" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"> Twitter</i></a>
         <a style="color: #B23121;" class="btn bg-white mr-2" href="{% url 'contact:contact' %}"><i class="fa fa-envelope" aria-hidden="true"> Contact</i></a>
     </div>
     <div class="text-center rounded text-white">

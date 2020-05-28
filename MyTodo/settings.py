@@ -194,20 +194,18 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 LOGIN_REDIRECT_URL = 'todoapp:home'
 ACCOUNT_LOGOUT_REDIRECT = 'todoapp:home' 
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#EMAIL_HOST = config('EMAIL_HOST')
-#EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-#EMAIL_HOST_PASSWORD =  config('EMAIL_HOST_PASSWORD')
-#EMAIL_PORT = config('EMAIL_PORT', cast=int)
-#EMAIL_USE_TLS  =  config('EMAIL_USE_TLS', cast=bool)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD =  config('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_USE_TLS  =  config('EMAIL_USE_TLS', cast=bool)
 
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
-print(DEFAULT_FROM_EMAIL)
 
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE =  True 
