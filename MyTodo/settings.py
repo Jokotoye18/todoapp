@@ -151,9 +151,7 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
+    
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
@@ -204,6 +202,7 @@ EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_USE_TLS  =  config('EMAIL_USE_TLS', cast=bool)
 
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+print(DEFAULT_FROM_EMAIL)
 
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
