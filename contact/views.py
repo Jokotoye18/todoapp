@@ -10,7 +10,7 @@ from .forms import ContactForm
 from django.views.generic import View
 
 
-class ContactView(LoginRequiredMixin, View):
+class ContactView(View):
     login_url = 'account_login'
 
     def get(self, request, *args, **kwargs):

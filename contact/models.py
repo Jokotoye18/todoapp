@@ -5,6 +5,8 @@ class Contact(models.Model):
     email = models.EmailField(max_length=150)
     message = models.TextField()
 
+    objects = models.Manager
+
     class Meta:
         ordering = ['id']
 

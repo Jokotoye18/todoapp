@@ -17,6 +17,9 @@ whitenoise = "*"
 gunicorn = "*"
 django-heroku = "*"
 sentry-sdk = "*"
+django-csp = "*"
+coverage = "*"
+dj-database-url = "*"
 
 [requires]
 python_version = "3.8"

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import dj_database_url
 import django_heroku
 from decouple import config
 from decouple import Csv
@@ -35,14 +36,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY')
 
 ENVIRONMENT = config('ENVIRONMENT', default='production')
-print(ENVIRONMENT)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
-print(DEBUG)
 
-ALLOWED_HOSTS = config('', default='127.0.0.1', cast=Csv())
-print(ALLOWED_HOSTS)
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='127.0.0.1', cast=Csv())
 
 #ALLOWED_HOSTS = ['*']
 
@@ -89,6 +87,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',#whitenoise
     'django.middleware.common.CommonMiddleware',
+    'csp.middleware.CSPMiddleware',#django-csp
     'django.middleware.csrf.CsrfViewMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',#debug_toolbar
     "django.middleware.common.BrokenLinkEmailsMiddleware", #Manager
@@ -145,6 +144,11 @@ DATABASES = {
     #    'PORT': config('DB_PORT', cast=int),
     #}
 }
+
+DATABASE_URL = config('DATABASE_URL')
+db_from_env = dj_database_url.config(default=DATABASE_URL, conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
 
 
 # Password validation
@@ -243,17 +247,27 @@ if ENVIRONMENT == 'production':
         }
     }
     
-    SECURE_BROWSER_XSS_FILTER = True
-    X_FRAME_OPTIONS = 'DENY'
+    #HTTP Strict Transport Security (HSTS)
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_SSL_REDIRECT = True
     SECURE_HSTS_SECONDS = 3600
-    #SECURE_REFERRER_POLICY = 'same-origin'
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
+
+    #Cross-Site Request Forgery (CSRF)
+    CSRF_COOKIE_SECURE = True  # cookie will only be sent over an HTTPS connection
+    CSRF_COOKIE_HTTPONLY = True  # only accessible through http(s) request, JS not allowed to access csrf cookies
+
+    
+    X_FRAME_OPTIONS = 'DENY'
+    #SECURE_REFERRER_POLICY = 'same-origin'
+    
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+    #Cross-Site Scripting (XSS)
+    SECURE_BROWSER_XSS_FILTER = True
+    SESSION_COOKIE_HTTPONLY = True
+    #django-csp(Details at official docs)
 
 django_heroku.settings(locals())
