@@ -87,7 +87,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',#whitenoise
     'django.middleware.common.CommonMiddleware',
-    'csp.middleware.CSPMiddleware',#django-csp
+    # 'csp.middleware.CSPMiddleware',#django-csp
     'django.middleware.csrf.CsrfViewMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',#debug_toolbar
     "django.middleware.common.BrokenLinkEmailsMiddleware", #Manager
