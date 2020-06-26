@@ -19,6 +19,7 @@ django-heroku = "*"
 sentry-sdk = "*"
 coverage = "*"
 dj-database-url = "*"
+django-sri = "*"
 
 [requires]
 python_version = "3.8"

@@ -64,6 +64,7 @@ INSTALLED_APPS = [
     'allauth', 
     'allauth.account', 
     'allauth.socialaccount',
+    
 
     #django allauth provider
     #'allauth.socialaccount.providers.google',
@@ -75,6 +76,7 @@ INSTALLED_APPS = [
 
     #third party
     'crispy_forms',
+    'sri',
 ]
 
 #debug_toolbar
@@ -86,7 +88,9 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',#whitenoise
-    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware', #cache 
+    'django.middleware.common.CommonMiddleware', 
+    'django.middleware.cache.FetchFromCacheMiddleware',#cache 
     # 'csp.middleware.CSPMiddleware',#django-csp
     'django.middleware.csrf.CsrfViewMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',#debug_toolbar
@@ -244,6 +248,10 @@ if ENVIRONMENT == 'production':
         'default': {
             'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache', 
             'LOCATION': '127.0.0.1:11211',
+            'OPTIONS': {
+                'server_max_value_length': 1024 * 1024 * 2,
+            }
+
         }
     }
     
