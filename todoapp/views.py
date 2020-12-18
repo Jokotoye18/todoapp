@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
+# from django.http import JsonResponse
+# from django.core import serializers
 from django.urls import reverse, reverse_lazy
 from django.views.generic import View, DeleteView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -7,9 +9,9 @@ from .forms import TodoForm
 from.models import Todo
 
 
-
-class TodoList(LoginRequiredMixin, View):
+class Todos(LoginRequiredMixin, View):
     login_url = "account_login"
+    redirect_field_name = 'next'
 
     def get(self, *args, **kwargs):
         form = TodoForm()
@@ -18,15 +20,15 @@ class TodoList(LoginRequiredMixin, View):
         return render(self.request, "todo_list.html", context)
 
     def post(self, *args, **kwargs):
-        form = TodoForm(self.request.POST)
+        form = TodoForm(self.request.POST or None)
         if form.is_valid():
             todo = form.save(commit=False)
             todo.owner = self.request.user
             todo.save()
             messages.success(self.request, 'Todo added successfully.')
-        return redirect("todoapp:home")
-
-    
+            return redirect("todoapp:home")
+        return render(self.request, "todo_list.html", {"form": form})
+        
 
 def delete_all( request):
     todos = Todo.objects.filter(owner__username=request.user.username)

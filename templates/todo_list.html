@@ -41,7 +41,7 @@
                                 {% endif %}
                             </div>
                             <div class="col-2 align-self-center text-left">
-                                <a class="" href="{% url 'todoapp:delete' todo.id %}"><i class="fa fa-trash-o  text-danger"></i></a>
+                                <a href="{% url 'todoapp:delete' todo.id %}"><i class="fa fa-trash-o  text-danger"></i></a>
                             </div>
                         </div> 
                     {% empty %}

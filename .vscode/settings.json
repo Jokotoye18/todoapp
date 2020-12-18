@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "c:\\Users\\jokot\\.virtualenvs\\todoapp-gW4QS3ZC\\Scripts\\python.exe"
+    "python.pythonPath": "c:\\Users\\jokot\\.virtualenvs\\todoapp-gW4QS3ZC\\Scripts\\python.exe",
+    "compile-hero.disable-compile-files-on-did-save-code": true
 }
